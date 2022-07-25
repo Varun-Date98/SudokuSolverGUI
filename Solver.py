@@ -17,6 +17,15 @@ class Solver:
         self.board = board
         self.backtracking()
 
+    def printSudokuBoard(self) -> None:
+        """
+        Prints the sudoku board line by line
+        :return: NA
+        :rtype: NA
+        """
+        for i in range(9):
+            print(self.board[i])
+
     def backtracking(self) -> bool:
         """
         Solves the given sudoku board inplace using backtracking
@@ -45,7 +54,7 @@ class Solver:
         """
         Method to return row and column index of the first empty cell
         :return: row, column of the first empty cell. None if there is no empty cell
-        :rtype: tuple(int, int)
+        :rtype: Optional[Tuple[int, int]]
         """
         for i in range(9):
             for j in range(9):
@@ -68,21 +77,21 @@ class Solver:
         """
 
         # Check for duplicate in the column
-        for r in range(9):
-            if self.board[r][col] == value:
-                return False
-
-        # Check for duplicate in the row
         for c in range(9):
             if self.board[row][c] == value:
                 return False
 
-        box_row = row // 3
+        # Check for duplicate in the row
+        for r in range(9):
+            if self.board[r][col] == value:
+                return False
+
         box_col = col // 3
+        box_row = row // 3
 
         # Check for duplicate in the 3x3 box
         for i in range(box_row * 3, box_row * 3 + 3):
-            for j in range(box_col * 3, box_row * 3 + 3):
+            for j in range(box_col * 3, box_col * 3 + 3):
                 if self.board[i][j] == value:
                     return False
 
