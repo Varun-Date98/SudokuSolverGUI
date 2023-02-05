@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: sudoku
+Version: 0.0.0
+Summary: GUI based sudoku solver
+Author: Varun Date
+Platform: win32
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
